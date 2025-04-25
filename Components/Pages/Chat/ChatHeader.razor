@@ -1,0 +1,27 @@
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.0.0/lib/anime.min.js"></script>
+<div class="chat-header-container main-background-gradient">
+    <div class="chat-header-controls page-width">
+        <button class="btn-default" @onclick="@OnNewChat">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="new-chat-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            New chat
+        </button>
+    </div>
+
+    <h1 class="page-width">Welcome Bro</h1>
+    <div class="large centered row">
+        <svg width="128" height="128" viewBox="0 0 128 128">
+            <filter id="displacementFilter">
+                <feTurbulence type="turbulence" numOctaves="2" baseFrequency="0" result="turbulence" />
+                <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="1" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+            <polygon points="64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96" fill="currentColor" />
+        </svg>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback OnNewChat { get; set; }
+}
