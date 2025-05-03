@@ -5,7 +5,7 @@ html {
 }
 
 html, .main-background-gradient {
-    background: linear-gradient(to bottom, rgb(225 227 233), #f4f4f4 25rem);
+    background: linear-gradient(135deg, #0a0a0a, #1e1e2f, #2c2233) !important;
 }
 
 body {

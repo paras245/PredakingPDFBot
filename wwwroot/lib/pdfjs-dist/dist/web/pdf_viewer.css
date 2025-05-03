@@ -956,11 +956,11 @@
     width:50%;
   }
 
-.annotationLayer .textWidgetAnnotation input.comb{
-    font-family:monospace;
-    padding-left:2px;
-    padding-right:0;
-  }
+.annotationLayer .textWidgetAnnotation input.comb {
+    font-family: Anton;
+    padding-left: 2px;
+    padding-right: 0;
+}
 
 .annotationLayer .textWidgetAnnotation input.comb:focus{
     width:103%;
