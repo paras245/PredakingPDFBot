@@ -43,6 +43,7 @@
 .assistant-search {
     font-size: 0.875rem;
     line-height: 1.25rem; 
+    color:whitesmoke;
 }
 
 .assistant-search-icon {
@@ -109,4 +110,9 @@
 
 ::deep th, ::deep tr:nth-child(even) {
     background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+.assistant-message{
+    color:whitesmoke;
 }
