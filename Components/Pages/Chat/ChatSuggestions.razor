@@ -5,7 +5,7 @@
     <div class="page-width suggestions">
         @foreach (var suggestion in suggestions)
         {
-            <button class="btn-subtle" @onclick="@(() => AddSuggestionAsync(suggestion))">
+            <button class="btn-subtle" style="background-color:rgb(182, 215, 232)" @onclick="@(() => AddSuggestionAsync(suggestion))">
                 @suggestion
             </button>
         }
