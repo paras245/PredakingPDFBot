@@ -20,7 +20,7 @@ h1 {
 
 @media (min-width: 768px) {
     .chat-header-container {
-        position: sticky;
+        position: inherit;   /*Sticky*/
     }
 }
 /*Start for Welcome */
