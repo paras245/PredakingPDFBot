@@ -31,6 +31,8 @@ builder.Services.AddScoped<DataIngestor>();
 builder.Services.AddSingleton<SemanticSearch>();
 builder.Services.AddChatClient(chatClient).UseFunctionInvocation().UseLogging();
 builder.Services.AddEmbeddingGenerator(embeddingGenerator);
+builder.Services.AddSingleton<SpeechService>();
+
 
 builder.Services.AddDbContext<IngestionCacheDbContext>(options =>
     options.UseSqlite("Data Source=ingestioncache.db"));
