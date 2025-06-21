@@ -10,7 +10,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "https": {
+    "Kestrelhttps": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
