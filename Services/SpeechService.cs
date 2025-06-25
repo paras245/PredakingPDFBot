@@ -21,5 +21,10 @@ namespace ChatApp1.Services
                 _sythesizer.SpeakAsync(cleanedText);
             }
         }
+
+        public void StopSpeak()
+        {
+            _sythesizer.SpeakAsyncCancelAll();
+        }
     }
 }

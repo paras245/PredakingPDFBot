@@ -24,7 +24,14 @@ else if (Message.Role == ChatRole.Assistant)
                     </div>
                 </div>
                 <div class="assistant-message-header">Assistant</div>
+
                 <div class="assistant-message-text">
+                    <button class="" type="button" @onclick="() => SpeakText(text)">
+                        <a class="play-btn" href="#"></a>
+                    </button>
+                    <button class="styled" type="button" @onclick="() => StopSpeak()">
+                        Click to Stop
+                    </button>
                     <assistant-message markdown="@text"></assistant-message>
 
                     @foreach (var citation in citations ?? [])
@@ -74,7 +81,7 @@ else if (Message.Role == ChatRole.Assistant)
         if (!InProgress && Message.Role == ChatRole.Assistant && Message.Text is { Length: > 0 } text)
         {
             ParseCitations(text);
-            SpeechService.Speak(text);
+            //SpeechService.Speak(text);
         }
     }
 
@@ -92,5 +99,18 @@ else if (Message.Role == ChatRole.Assistant)
         citations = matches.Any()
             ? matches.Select(m => (m.Groups["file"].Value, int.TryParse(m.Groups["page"].Value, out var page) ? page : (int?)null, m.Groups["quote"].Value)).ToList()
             : null;
+    }
+
+    private void SpeakText(string text)
+    {
+        if (!string.IsNullOrWhiteSpace(text))
+        {
+            SpeechService.Speak(text);
+        }
+    }
+
+    private void StopSpeak()
+    {
+        SpeechService.StopSpeak();
     }
 }
