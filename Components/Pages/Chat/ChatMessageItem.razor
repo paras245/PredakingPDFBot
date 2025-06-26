@@ -26,11 +26,12 @@ else if (Message.Role == ChatRole.Assistant)
                 <div class="assistant-message-header">Assistant</div>
 
                 <div class="assistant-message-text">
-                    <button class="" type="button" @onclick="() => SpeakText(text)">
-                        <a class="play-btn" href="#"></a>
+                    <button class="styled" type="button" @onclick="() => SpeakText(text)">
+                        @* <a class="play-btn" href="#"></a> *@
+                        Click to Start Speak
                     </button>
                     <button class="styled" type="button" @onclick="() => StopSpeak()">
-                        Click to Stop
+                        Click to Stop Speak
                     </button>
                     <assistant-message markdown="@text"></assistant-message>
 
