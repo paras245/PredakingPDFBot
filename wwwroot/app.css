@@ -1,32 +1,96 @@
 @import url('lib/tailwindcss/dist/preflight.css');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap');
 
-html {
-    min-height: 100vh;
+:root {
+    --bat-dark-bg: #06080f;
+    --bat-darker-bg: #030408;
+    --bat-panel-bg: rgba(16, 20, 26, 0.85);
+    --bat-panel-border: rgba(246, 193, 1, 0.2);
+    --bat-gold: #f6c101;
+    --bat-gold-glow: rgba(246, 193, 1, 0.4);
+    --bat-gold-hover: #ffd740;
+    --bat-text-primary: #e0e6ed;
+    --bat-text-muted: #8c9baf;
+    --bat-accent-red: #d32f2f;
+    --bat-accent-red-glow: rgba(211, 47, 47, 0.5);
+
+    --font-terminal: 'Share Tech Mono', monospace;
+    --font-ui: 'Inter', sans-serif;
+
+    --anim-speed-fast: 0.15s;
+    --anim-speed-normal: 0.3s;
 }
 
-html, .main-background-gradient {
-    background: linear-gradient(135deg, #0a0a0a, #1e1e2f, #2c2233) !important;
+/* Background grid effect to simulate tactical screen */
+html {
+    min-height: 100vh;
+    background-color: var(--bat-dark-bg) !important;
+    background-image:
+        linear-gradient(rgba(246, 193, 1, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(246, 193, 1, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--bat-text-primary);
+    font-family: var(--font-ui);
+}
+
+html,
+.main-background-gradient {
+    background: transparent !important;
 }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background: transparent;
+    padding: 0 10px;
+    /* Mobile safe area padding */
 }
 
-    html::after {
-        content: '';
-        background-image: linear-gradient(to right, #3a4ed5, #3acfd5 15%, #d53abf 85%, red);
-        width: 100%;
-        height: 2px;
-        position: fixed;
-        top: 0;
+@media (min-width: 768px) {
+    body {
+        padding: 0;
     }
+}
+
+/* Top scanline accent */
+html::after {
+    content: '';
+    background-image: linear-gradient(to right, transparent, var(--bat-gold), var(--bat-gold-hover), transparent);
+    width: 100%;
+    height: 2px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 0 10px var(--bat-gold-glow);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-terminal);
+    color: var(--bat-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 h1 {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
+    font-size: 1.75rem;
+    line-height: 2rem;
     font-weight: 600;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+    }
 }
 
 h1:focus {
@@ -38,57 +102,104 @@ h1:focus {
 }
 
 .invalid {
-    outline: 1px solid #e50000;
+    outline: 1px solid var(--bat-accent-red);
 }
 
 .validation-message {
-    color: #e50000;
+    color: var(--bat-accent-red);
+    font-family: var(--font-terminal);
+    font-size: 0.85rem;
 }
 
-.blazor-error-boundary {
-    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNDkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIG92ZXJmbG93PSJoaWRkZW4iPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxyZWN0IHg9IjIzNSIgeT0iNTEiIHdpZHRoPSI1NiIgaGVpZ2h0PSI0OSIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMCkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMzUgLTUxKSI+PHBhdGggZD0iTTI2My41MDYgNTFDMjY0LjcxNyA1MSAyNjUuODEzIDUxLjQ4MzcgMjY2LjYwNiA1Mi4yNjU4TDI2Ny4wNTIgNTIuNzk4NyAyNjcuNTM5IDUzLjYyODMgMjkwLjE4NSA5Mi4xODMxIDI5MC41NDUgOTIuNzk1IDI5MC42NTYgOTIuOTk2QzI5MC44NzcgOTMuNTEzIDI5MSA5NC4wODE1IDI5MSA5NC42NzgyIDI5MSA5Ny4wNjUxIDI4OS4wMzggOTkgMjg2LjYxNyA5OUwyNDAuMzgzIDk5QzIzNy45NjMgOTkgMjM2IDk3LjA2NTEgMjM2IDk0LjY3ODIgMjM2IDk0LjM3OTkgMjM2LjAzMSA5NC4wODg2IDIzNi4wODkgOTMuODA3MkwyMzYuMzM4IDkzLjAxNjIgMjM2Ljg1OCA5Mi4xMzE0IDI1OS40NzMgNTMuNjI5NCAyNTkuOTYxIDUyLjc5ODUgMjYwLjQwNyA1Mi4yNjU4QzI2MS4yIDUxLjQ4MzcgMjYyLjI5NiA1MSAyNjMuNTA2IDUxWk0yNjMuNTg2IDY2LjAxODNDMjYwLjczNyA2Ni4wMTgzIDI1OS4zMTMgNjcuMTI0NSAyNTkuMzEzIDY5LjMzNyAyNTkuMzEzIDY5LjYxMDIgMjU5LjMzMiA2OS44NjA4IDI1OS4zNzEgNzAuMDg4N0wyNjEuNzk1IDg0LjAxNjEgMjY1LjM4IDg0LjAxNjEgMjY3LjgyMSA2OS43NDc1QzI2Ny44NiA2OS43MzA5IDI2Ny44NzkgNjkuNTg3NyAyNjcuODc5IDY5LjMxNzkgMjY3Ljg3OSA2Ny4xMTgyIDI2Ni40NDggNjYuMDE4MyAyNjMuNTg2IDY2LjAxODNaTTI2My41NzYgODYuMDU0N0MyNjEuMDQ5IDg2LjA1NDcgMjU5Ljc4NiA4Ny4zMDA1IDI1OS43ODYgODkuNzkyMSAyNTkuNzg2IDkyLjI4MzcgMjYxLjA0OSA5My41Mjk1IDI2My41NzYgOTMuNTI5NSAyNjYuMTE2IDkzLjUyOTUgMjY3LjM4NyA5Mi4yODM3IDI2Ny4zODcgODkuNzkyMSAyNjcuMzg3IDg3LjMwMDUgMjY2LjExNiA4Ni4wNTQ3IDI2My41NzYgODYuMDU0N1oiIGZpbGw9IiNGRkU1MDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvZz48L3N2Zz4=) no-repeat 1rem/1.8rem, #b32121;
-    padding: 1rem 1rem 1rem 3.7rem;
-    color: white;
-}
-
-    .blazor-error-boundary::after {
-        content: "An error has occurred."
-    }
-
+/* Button default theme overridden for Batcomputer */
 .btn-default {
     display: flex;
-    padding: 0.25rem 0.75rem;
-    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
     align-items: center;
-    border-radius: 0.25rem;
-    border: 1px solid #9CA3AF;
+    justify-content: center;
+    border-radius: 4px;
+    border: 1px solid var(--bat-gold);
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 600;
-    background-color: #D1D5DB;
+    font-family: var(--font-terminal);
+    background-color: rgba(246, 193, 1, 0.1);
+    color: var(--bat-gold);
+    text-transform: uppercase;
+    transition: all var(--anim-speed-fast) ease-in-out;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    width: 100%;
+    /* Mobile first full width */
 }
 
-    .btn-default:hover {
-        background-color: #E5E7EB;
+@media (min-width: 768px) {
+    .btn-default {
+        width: auto;
     }
+}
+
+.btn-default:hover {
+    background-color: var(--bat-gold);
+    color: var(--bat-dark-bg);
+    box-shadow: 0 0 15px var(--bat-gold-glow);
+}
 
 .btn-subtle {
     display: flex;
-    padding: 0.25rem 0.75rem;
-    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
     align-items: center;
-    border-radius: 0.25rem;
-    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+    border: 1px solid var(--bat-panel-border);
     font-size: 0.875rem;
     line-height: 1.25rem;
+    background-color: var(--bat-panel-bg);
+    color: var(--bat-text-primary);
+    transition: all var(--anim-speed-fast);
+    cursor: pointer;
+    font-family: var(--font-ui);
 }
 
-    .btn-subtle:hover {
-        border-color: #93C5FD;
-        background-color: #DBEAFE;
-    }
+.btn-subtle:hover {
+    border-color: var(--bat-gold);
+    background-color: rgba(246, 193, 1, 0.1);
+    color: var(--bat-gold);
+    box-shadow: inset 0 0 10px var(--bat-gold-glow);
+}
 
 .page-width {
+    width: 100%;
     max-width: 1024px;
     margin: auto;
+}
+
+/* Glassmorphic Panel Generic Class */
+.bat-panel {
+    background: var(--bat-panel-bg);
+    border: 1px solid var(--bat-panel-border);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Scrollbar styling for dark tactical theme */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bat-darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bat-panel-border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bat-gold);
 }

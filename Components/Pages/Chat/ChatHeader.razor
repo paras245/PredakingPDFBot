@@ -1,5 +1,4 @@
-@* <script src="https://cdn.jsdelivr.net/npm/animejs@4.0.0/lib/anime.min.js"></script> *@
-<div class="chat-header-container main-background-gradient">
+<div class="chat-header-container">
     <div class="chat-header-controls page-width">
         <button class="btn-default" @onclick="@OnNewChat">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="new-chat-icon">
@@ -9,29 +8,15 @@
         </button>
     </div>
 
-    @* <h1 class="page-width" style="text-align:center">Welcome Batman</h1> *@
     <div class="page-width" style="text-align:center">
-    <a class="playbtn" style="" href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        WELCOME BATMAN!
-    </a>
+        <div class="playbtn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            WELCOME BATMAN!
+        </div>
     </div>
-    @* <div class="page-width" style="align-items:center;width:4%">
-    <img src="https://i.pinimg.com/736x/cc/de/86/ccde860836095c37fcffc8fe15634c87.jpg" alt="Batman Logo" />
-    </div> *@
-
-    @* <div class="large centered row">
-        <svg width="128" height="128" viewBox="0 0 128 128">
-            <filter id="displacementFilter">
-                <feTurbulence type="turbulence" numOctaves="2" baseFrequency="0" result="turbulence" />
-                <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="1" xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-            <polygon points="64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96" fill="currentColor" />
-        </svg>
-    </div> *@
 </div>
 
 @code {

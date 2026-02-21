@@ -1,47 +1,69 @@
 .chat-header-container {
-    top: 0; 
-    padding: 1.5rem; 
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--bat-panel-border);
+  background: linear-gradient(180deg, var(--bat-dark-bg) 0%, rgba(6, 8, 15, 0.8) 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .chat-header-controls {
-    margin-bottom: 1.5rem; 
-}
-
-h1 {
-    overflow: hidden;
-    text-overflow: ellipsis;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .new-chat-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    color: rgb(55, 65, 81);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: currentColor;
 }
 
 @media (min-width: 768px) {
-    .chat-header-container {
-        position: inherit;   /*Sticky*/
-    }
+  .chat-header-container {
+    padding: 1.5rem;
+  }
 }
-/*Start for Welcome */
+
+/* Batcomputer Welcome Header */
 .playbtn {
   position: relative;
   display: inline-block;
-  padding: 25px 30px;
-  margin: 40px 0;
-  color: #ffffff;
+  padding: 15px 20px;
+  margin: 10px 0;
+  color: var(--bat-gold);
   text-decoration: none;
   text-transform: uppercase;
   transition: 0.5s;
+  font-family: var(--font-terminal);
   font-weight: 600;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   overflow: hidden;
+  text-align: center;
+  font-size: 1.2rem;
+  background: rgba(246, 193, 1, 0.05);
+  border-radius: 4px;
+  text-shadow: 0 0 5px var(--bat-gold-glow);
 }
+
+@media (min-width: 768px) {
+  .playbtn {
+    padding: 25px 30px;
+    margin: 20px 0;
+    font-size: 2rem;
+    letter-spacing: 4px;
+  }
+}
+
 .playbtn:hover {
-  background: #ffffff;
-  color: #000000;
-  box-shadow: 0 0 5px #fff, 0 0 25px #fff, 0 0 50px #fff, 0 0 200px #fff;
-  -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+  background: var(--bat-gold);
+  color: var(--bat-dark-bg);
+  box-shadow: 0 0 10px var(--bat-gold), 0 0 20px var(--bat-gold), 0 0 40px var(--bat-gold);
+  -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+  text-shadow: none;
 }
 
 .playbtn span {
@@ -53,15 +75,16 @@ h1 {
   top: 0;
   left: 0;
   width: 100%;
-  height: 10px;
-  background: linear-gradient(90deg, transparent, #fff);
-  animation: animate1 1s linear infinite;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--bat-gold));
+  animation: animate1 2s linear infinite;
 }
 
 @keyframes animate1 {
   0% {
     left: -100%;
   }
+
   50%,
   100% {
     left: 100%;
@@ -71,17 +94,18 @@ h1 {
 .playbtn span:nth-child(2) {
   top: -100%;
   right: 0;
-  width: 10px;
+  width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, #fff);
-  animation: animate2 1s linear infinite;
-  animation-delay: 0.25s;
+  background: linear-gradient(180deg, transparent, var(--bat-gold));
+  animation: animate2 2s linear infinite;
+  animation-delay: 0.5s;
 }
 
 @keyframes animate2 {
   0% {
     top: -100%;
   }
+
   50%,
   100% {
     top: 100%;
@@ -92,16 +116,17 @@ h1 {
   bottom: 0;
   right: 0;
   width: 100%;
-  height: 10px;
-  background: linear-gradient(270deg, transparent, #fff);
-  animation: animate3 1s linear infinite;
-  animation-delay: 0.5s;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, var(--bat-gold));
+  animation: animate3 2s linear infinite;
+  animation-delay: 1s;
 }
 
 @keyframes animate3 {
   0% {
     right: -100%;
   }
+
   50%,
   100% {
     right: 100%;
@@ -111,156 +136,50 @@ h1 {
 .playbtn span:nth-child(4) {
   bottom: -100%;
   left: 0;
-  width: 10px;
+  width: 2px;
   height: 100%;
-  background: linear-gradient(360deg, transparent, #fff);
-  animation: animate4 1s linear infinite;
-  animation-delay: 0.75s;
+  background: linear-gradient(360deg, transparent, var(--bat-gold));
+  animation: animate4 2s linear infinite;
+  animation-delay: 1.5s;
 }
 
 @keyframes animate4 {
   0% {
     bottom: -100%;
   }
+
   50%,
   100% {
     bottom: 100%;
   }
 }
 
-
-/*End for Welcome*/
-
-/*Button For New chat Start*/
-/*.button-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+/* CRT Flicker Effect */
+.playbtn::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
 }
 
-.available-for-btn {
-    font-family: system-ui, math;
-    --animation: 2s ease-in-out infinite;
-    display: flex;
-    align-items: center;
-    column-gap: 2px;
-    color: #178d00;
-    background-color: #e1f9dc;
-    border-radius: 100px;
-    padding: 1rem 1.5rem 1rem 0.5rem;
-    outline: none;
-    border: none;
-    font-weight: 600;
-    position: relative;
-    transition: 0.2s ease-in-out;
-    cursor: pointer;
-    font-size: 16px;
+@keyframes flicker {
+  0% {
+    opacity: 0.02;
+  }
+
+  50% {
+    opacity: 0.05;
+  }
+
+  100% {
+    opacity: 0.02;
+  }
 }
-
-    .available-for-btn:hover {
-        background-color: #ffffff;
-    }
-
-    .available-for-btn:active {
-        background-color: #e1f9dc;
-        border: solid 2px #178d00;
-    }
-
-.circle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 16px;
-    height: 16px;
-    border: solid 2px #178d00;
-    border-radius: 50%;
-    margin: 0 10px;
-    background-color: transparent;
-    animation: circle-keys var(--animation);
-}
-
-    .circle .dot {
-        position: absolute;
-        transform: translate(-50%, -50%);
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: #178d00;
-        animation: dot-keys var(--animation);
-    }
-
-    .circle .outline {
-        position: absolute;
-        transform: translate(-50%, -50%);
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        animation: outline-keys var(--animation);
-    }
-
-    .circle:nth-child(2) {
-        animation-delay: 0.3s;
-    }
-
-        .circle:nth-child(2) .dot {
-            animation-delay: 0.3s;
-        }
-
-    .circle:nth-child(1) .outline {
-        animation-delay: 0.9s;
-    }
-
-    .circle:nth-child(2) .outline {
-        animation-delay: 1.2s;
-    }
-
-@keyframes circle-keys {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    50% {
-        transform: scale(1.5);
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes dot-keys {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(0);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes outline-keys {
-    0% {
-        transform: scale(0);
-        outline: solid 20px var(--color);
-        outline-offset: 0;
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(1);
-        outline: solid 0 transparent;
-        outline-offset: 20px;
-        opacity: 0;
-    }
-}*/
-
-/*Button For New chat End*/
