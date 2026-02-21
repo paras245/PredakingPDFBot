@@ -9,15 +9,39 @@
 }
 
 .bat-suggestion {
-    border-color: var(--bat-gold);
+    border: 1px solid var(--bat-gold);
     color: var(--bat-gold);
     font-family: var(--font-terminal);
     text-transform: uppercase;
     font-size: 0.8rem;
     text-shadow: 0 0 2px var(--bat-gold-glow);
+    background: linear-gradient(135deg, rgba(246, 193, 1, 0.1) 0%, rgba(16, 20, 26, 0.9) 100%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.bat-suggestion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(246, 193, 1, 0.2), transparent);
+    transform: skewX(-20deg);
+    transition: all 0.5s;
+}
+
+.bat-suggestion:hover::before {
+    left: 150%;
 }
 
 .bat-suggestion:hover {
-    background: var(--bat-gold);
+    background: linear-gradient(135deg, var(--bat-gold) 0%, #d4a000 100%);
     color: var(--bat-dark-bg);
+    box-shadow: 0 0 15px var(--bat-gold-glow);
+    text-shadow: none;
 }

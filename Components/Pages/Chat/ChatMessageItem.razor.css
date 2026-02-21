@@ -1,16 +1,20 @@
 ﻿.user-message {
-    background: rgba(246, 193, 1, 0.1);
+    background: linear-gradient(135deg, rgba(246, 193, 1, 0.15) 0%, rgba(16, 20, 26, 0.95) 100%);
     border: 1px solid var(--bat-gold);
     align-self: flex-end;
     min-width: 25%;
     max-width: calc(100% - 2rem);
     padding: 0.75rem 1.25rem;
-    border-radius: 8px 8px 0 8px;
+    border-radius: 8px 8px 8px 0;
+    /* Changed to match theme better or keep 8px 8px 0 8px */
     color: var(--bat-gold);
     white-space: pre-wrap;
     font-family: var(--font-ui);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     margin: 1rem 0;
+    transform: translateZ(0);
 }
 
 @media (min-width: 768px) {
@@ -26,12 +30,16 @@
     grid-template-columns: 2.5rem minmax(0, 1fr);
     gap: 0.5rem;
     padding: 1rem;
-    background: var(--bat-panel-bg);
+    background: rgba(16, 20, 26, 0.95);
+    /* Extremely dark to block out video behind text */
     border: 1px solid var(--bat-panel-border);
     border-radius: 8px 8px 8px 0;
     margin: 1rem 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     color: var(--bat-text-primary);
+    transform: translateZ(0);
 }
 
 .assistant-message-header {

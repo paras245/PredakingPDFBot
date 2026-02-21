@@ -1,13 +1,16 @@
 ﻿.input-box {
     display: flex;
     flex-direction: column;
-    background: var(--bat-panel-bg);
-    border: 1px solid var(--bat-panel-border);
+    background: linear-gradient(180deg, rgba(30, 36, 44, 0.95) 0%, rgba(10, 12, 16, 0.98) 100%);
+    border: 1px solid var(--bat-gold);
     border-radius: 8px;
     padding: 0.75rem 1rem;
     margin-top: 0.75rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     transition: all var(--anim-speed-normal);
+    transform: translateZ(0);
 }
 
 .input-box:focus-within {
